@@ -2,36 +2,47 @@ import Link from "next/link"
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-linear-to-r from-[#FF6B6B] via-[#FFA56B] to-[#FFD56B] text-white shadow-md">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-[#ee5d6c] via-[#fb9062] to-[#eeaf61] text-white shadow-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-22 items-center justify-between">
-          <div className="shrink-0 flex items-center space-x-2">
-            <img src="/campus-crib-logo.png" alt="CampusCrib Logo" className="h-20 w-20"/>
-            <Link href="/" className="hover:opacity-90 transition-opacity text-2xl font-bold tracking-tight">
-              CampusCrib
-            </Link>
-          </div>
+        <div className="flex h-16 items-center justify-between">
+          
+          {/* Brand */}
+          <Link href="/" className="tracking-tight hover:opacity-90">
+            <div className="flex items-center space-x-2">
+              <div className="h-12 w-12 overflow-hidden">
+                <img src="/campus-crib-logo.png" alt="CampusCrib" className="h-full w-full object-cover" />
+              </div>
+              <div className="pl-4 text-2xl font-bold font-quickSand">Campus Crib</div>
+            </div>
+          </Link>
 
-          <nav className="hidden md:flex items-center space-x-5 text-xl font-medium">
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center space-x-6 text-xl font-bold font-quickSand">
             {["Listings", "Roommates", "Guides", "About"].map((item) => (
               <Link
                 key={item}
                 href={`/${item.toLowerCase()}`}
-                className="relative px-6 py-4 transition-all hover:bg-white/20 hover:backdrop-blur-sm hover:text-white"
+                className="px-4 py-2 transition hover:bg-white/15 hover:backdrop-blur-sm"
               >
                 {item}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden md:flex">
-            <Link href="/signup" className="rounded-lg bg-white px-5 py-2 font-semibold text-orange-600 shadow-lg transition hover:bg-orange-50">
+          <div className="hidden md:flex items-center space-x-4">
+            <Link href="/signin" className="px-3 py-2 text-xl font-quickSand transition hover:opacity-90">
+              Sign In
+            </Link>
+            <Link href="/signup" className="rounded-md bg-white px-4 py-2 text-xl font-quickSand text-orange-600 shadow transition hover:bg-orange-50">
               Sign Up
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden inline-flex items-center justify-center rounded-md p-2 transition hover:bg-white/10" aria-label="Open menu">
+          {/* Mobile menu */}
+          <button
+            className="md:hidden inline-flex items-center justify-center rounded-md p-2 transition hover:bg-white/10"
+            aria-label="Open menu"
+          >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>

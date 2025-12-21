@@ -1,4 +1,4 @@
-# CampusCrib
+# WIP - CampusCrib
 
 CampusCrib is a student housing platform designed by students for students to restore trust, affordability, and safety in the housing search. CampusCrib reduces the housing search crisis for students through three main features:
 

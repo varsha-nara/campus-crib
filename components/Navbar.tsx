@@ -1,10 +1,8 @@
-import Link from "next/link"
-import Hero from "./Hero"
+import Link from "next/link";
 
-export default function Header() {
-  return (
-    <>
-      <header className="sticky top-0 z-50 text-white">
+export default function Navbar() {
+    return (
+        <header className="sticky top-0 z-50 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
@@ -49,7 +47,5 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <Hero />
-    </>
-  )
+    )
 }

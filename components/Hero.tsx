@@ -115,18 +115,18 @@ export default function Hero() {
         <img src="/images/cap-card.png" className="relative w-[90%]" alt="Home Slide Background" />
 
         {/* Hero text on the roof */}
-        <div className="absolute top-[7%] left-1/2 -translate-x-1/2 z-10 text-center w-full">
-          <h1 className="text-lg md:text-3xl lg:text-5xl font-quickSand font-medium text-white mb-0.5 md:mb-2 lg:mb-3">
+        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 z-10 text-center w-full">
+          <h1 className="text-lg md:text-3xl lg:text-5xl font-quickSand text-white mb-0 md:mb-2 lg:mb-3">
             Home starts here.
           </h1>
-          <p className="text-sm md:text-lg lg:text-2xl text-white font-quickSand font-medium mb-2 md:mb-3 lg:mb-6">
+          <p className="text-sm md:text-lg lg:text-3xl text-white font-quickSand mb-2 md:mb-3 lg:mb-10">
             Student housing you can trust with verified listings...
           </p>
           <div className="relative w-[50%] max-w-xl mx-auto sm:w-[40%] md:w-[50%] lg:w-xl">
             <input
               type="text"
               placeholder="Search Listings..."
-              className="w-full px-2 py-0.5 sm:px-3 sm:py-0.5 md:px-3 md:py-1 lg:px-5 lg:py-2 pr-12 sm:pr-14 md:pr-16 rounded-full text-sm sm:text-base md:text-base border-2 border-gray-200 focus:border focus:outline-none"
+              className="w-full px-2 py-0.5 sm:px-3 sm:py-0.5 md:px-3 md:py-1 lg:px-5 lg:py-2 pr-12 sm:pr-14 md:pr-16 rounded-full text-sm sm:text-base md:text-base bg-white/90 focus:ring-[#ce4993] focus:ring-2 focus:outline-none"
             />
             <button className="absolute right-1 sm:right-1.5 md:right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#ee5d6c] via-[#fb9062] to-[#eeaf61] text-white p-1 md:p-2 lg:p-3 rounded-full">
               <Search size={16} className="xs:w-2.5 xs:h-2.5 w-4 h-4" />

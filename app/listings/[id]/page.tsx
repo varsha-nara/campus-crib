@@ -4,8 +4,9 @@ import SaveButton from "@/components/SaveButton"
 import ListingMap from "@/components/ListingMap"
 import { notFound } from "next/navigation"
 
-export default async function ListingDetailPage({ params }: { params: { id: string } }) {
-  const listing = staticListings.find(l => l.id === params.id)
+export default async function ListingDetailPage({ params }: { params: Promise<{ id: string }>}) {
+  const { id } = await params; 
+  const listing = staticListings.find(l => l.id === id)
   if (!listing) notFound()
 
   function parsePrice(str: string) {

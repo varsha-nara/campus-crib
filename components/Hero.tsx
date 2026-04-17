@@ -1,9 +1,11 @@
 "use client"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Search } from "lucide-react"
 import HeroCard from "./HeroCard"
 import Listing from "./Listing"
+import { listings } from "@/data/listings";
 
 interface ListingData {
   id: string;
@@ -18,20 +20,16 @@ interface ListingData {
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const router = useRouter()
+  const [search, setSearch] = useState("")
 
-  useEffect(() => {
-    const fetchListings = async () => {
-      try {
-        const response = await fetch('/api/listings')
-        const data = await response.json()
-        setListings(data)
-      } catch (error) {
-        console.error('Error fetching listings:', error)
-      }
+  const handleSearch = () => {
+    if (search.trim()) {
+      router.push(`/listings?search=${encodeURIComponent(search.trim())}`)
+    } else {
+      router.push("/listings")
     }
-    
-    // fetchListings() // Uncomment when you have the API
-  }, [])
+  }
 
   useEffect(() => {
       const prefersReducedMotion = window.matchMedia(
@@ -72,29 +70,6 @@ export default function Hero() {
     return () => clearInterval(interval)
   }, [])
 
-  const [listings, setListings] = useState<ListingData[]>([
-    {
-      id: "1",
-      title: "Apartment 1",
-      price: "$28,000",
-      image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&h=300&fit=crop",
-      bedrooms: 4,
-      bathrooms: 3,
-      sqft: "2,500 sq ft",
-      amenities: ["Parking Lot"]
-    },
-    {
-      id: "2",
-      title: "Apartment 2",
-      price: "$25,000",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=300&fit=crop",
-      bedrooms: 2,
-      bathrooms: 2,
-      sqft: "1,800 sq ft",
-      amenities: ["In-unit washer & dryer"]
-    }
-  ])
-
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % listings.length)
   }
@@ -115,20 +90,22 @@ export default function Hero() {
         <img src="/images/cap-card.png" className="relative w-[90%]" alt="Home Slide Background" />
 
         {/* Hero text on the roof */}
-        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 z-10 text-center w-full">
-          <h1 className="text-lg md:text-3xl lg:text-5xl font-quickSand text-white mb-0 md:mb-2 lg:mb-3">
-            Home starts here.
+        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 z-10 text-center w-full">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-quickSand text-white mb-0">
+            Built by students, for students.
           </h1>
-          <p className="text-sm md:text-lg lg:text-3xl text-white font-quickSand mb-2 md:mb-3 lg:mb-10">
+          <p className="text-sm md:text-lg lg:text-2xl text-white font-quickSand xs:mt-0 sm:mt-0 mt-2">
             Student housing you can trust with verified listings...
           </p>
-          <div className="relative w-[50%] max-w-xl mx-auto sm:w-[40%] md:w-[50%] lg:w-xl">
+          <div className="relative w-[50%] max-w-xl mx-auto sm:w-[40%] md:w-[50%] lg:w-xl mt-2 sm:mt-5 md:mt-5 lg:mt-12">
             <input
               type="text"
               placeholder="Search Listings..."
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               className="w-full px-2 py-0.5 sm:px-3 sm:py-0.5 md:px-3 md:py-1 lg:px-5 lg:py-2 pr-12 sm:pr-14 md:pr-16 rounded-full text-sm sm:text-base md:text-base bg-white/90 focus:ring-[#ce4993] focus:ring-2 focus:outline-none"
             />
-            <button className="absolute right-1 sm:right-1.5 md:right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#ee5d6c] via-[#fb9062] to-[#eeaf61] text-white p-1 md:p-2 lg:p-3 rounded-full">
+            <button onClick={handleSearch} className="absolute right-1 sm:right-1.5 md:right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#ee5d6c] via-[#fb9062] to-[#eeaf61] text-white p-1 md:p-2 lg:p-3 rounded-full">
               <Search size={16} className="xs:w-2.5 xs:h-2.5 w-4 h-4" />
             </button>
           </div>

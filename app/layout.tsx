@@ -1,6 +1,7 @@
+import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import Navbar from "@/components/Navbar"
-import type { ReactNode } from "react"
+import Footer from "@/components/Footer"
 
 export default function RootLayout({
   children,
@@ -9,10 +10,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="bg-gradient-to-b from-[#ee5d6c] via-[#fb9062] to-[#eeaf61]">
+      <body className="bg-gradient-to-b from-[#ee5d6c] via-[#fb9062] to-[#eeaf61]">
+        <Navbar />
           {children}
-        </div>
+        <Footer />
       </body>
     </html>
   )

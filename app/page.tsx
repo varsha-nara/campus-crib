@@ -4,7 +4,7 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <div>
+    <div className="pb-[10%]">
       <Hero />
       <div className="mt-10 text-center justify-center max-w-5xl mx-auto">
         <h1 className="mt-[5%] text-3xl md:text-3xl lg:text-5xl font-medium font-quickSand mb-0 md:mb-2 lg:mb-3">

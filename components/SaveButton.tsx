@@ -47,13 +47,13 @@ export default function SaveButton({ listingId }: { listingId: string }) {
     <button
       onClick={toggle}
       disabled={loading}
-      className={`w-full py-3 rounded-xl border-2 font-quickSand font-medium transition ${
+      className={`w-full py-3 rounded-xl border-2 font-quickSand font-medium text-lg transition ${
         saved
           ? "border-[#ce4993] text-[#ce4993] bg-pink-50"
-          : "border-gray-300 text-gray-600 hover:border-[#ce4993] hover:text-[#ce4993]"
+          : "border-gray-300 text-white hover:border-[#ce4993] hover:text-[#ce4993]"
       }`}
     >
-      {saved ? "♥ Saved" : "♡ Save Listing"}
+      {saved ? "Saved" : "Save Listing"}
     </button>
   )
 }

@@ -2,12 +2,10 @@
 import { useState, useMemo, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { X } from "lucide-react"
-import Navbar from "@/components/Navbar"
 import SearchBar from "@/components/SearchBar"
 import ListingCard from "@/components/ListingCard"
 import { listings } from "@/data/listings"
 import dynamic from "next/dynamic"
-import Footer from "@/components/Footer"
 
 const Map = dynamic(() => import("@/components/Map"), { ssr: false })
 
@@ -92,26 +90,30 @@ export default function ListingsPage() {
       <SearchBar filters={filters} onChange={setFilters} />
 
       {/* Active filter chips */}
-      {activeChips.length > 0 && (
-        <div className="relative z-20 flex flex-wrap gap-2 px-6 py-2">
-          {activeChips.map((chip) => (
+      <div className="flex flex-row justify-between">
+        {filtered.length !== 0 && <p className="text-white text-md font-quickSand ml-4 mr-4 mb-4">{filtered.length} roommate{filtered.length !== 1 ? "s" : ""} found</p>}
+        {filtered.length === 0 && <p className="text-white text-md font-quickSand ml-4 mr-4 *:mb-4">No roommates found.</p>}
+        {activeChips.length > 0 && (
+            <div className="relative pt-0 flex flex-wrap gap-2 px-6 py-2">
+            {activeChips.map((chip) => (
+                <button
+                key={chip.label}
+                onClick={chip.clear}
+                className="flex items-center gap-1 bg-white/90 text-[#6a0d83] text-sm px-3 py-1 rounded-full shadow hover:bg-white transition"
+                >
+                {chip.label}
+                <X size={12} />
+                </button>
+            ))}
             <button
-              key={chip.label}
-              onClick={chip.clear}
-              className="flex items-center gap-1 bg-white/90 text-[#6a0d83] text-sm px-3 py-1 rounded-full shadow hover:bg-white transition"
+                onClick={() => setFilters(defaultFilters)}
+                className="text-sm text-white/80 underline hover:text-white px-2"
             >
-              {chip.label}
-              <X size={12} />
+                Clear all
             </button>
-          ))}
-          <button
-            onClick={() => setFilters(defaultFilters)}
-            className="text-sm text-white/80 underline hover:text-white px-2"
-          >
-            Clear all
-          </button>
-        </div>
-      )}
+            </div>
+        )}
+      </div>
 
       <img src="/images/sun.png" className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[90%] h-auto z-0" alt="Sun"/>
       <img id="cloud1" src="/images/cloud1.png" className="absolute left-0 top-[15vh] lg:top-[30vh] w-[50vw] sm:w-3/5 md:w-2/3 lg:w-1/2 -translate-x-1/3 pointer-events-none" />
@@ -122,20 +124,11 @@ export default function ListingsPage() {
           <Map listings={filtered} />
         </div>
 
-        <div className="w-full lg:w-1/2 mt-0">
-          <p className="text-white text-md font-quickSand ml-5">
-            {filtered.length} listing{filtered.length !== 1 ? "s" : ""} found
-          </p>
-          <div className="p-4">
-            {filtered.length === 0 ? (
-              <p className="text-white font-quickSand text-lg">No listings match your filters.</p>
-            ) : (
-              <div className="grid gap-6 sm:grid-cols-2">
-                {filtered.map((listing) => (
-                  <ListingCard key={listing.id} {...listing} />
-                ))}
-              </div>
-            )}
+        <div className="w-full lg:w-1/2 mt-0 pl-4 pr-4">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {filtered.map((listing) => (
+              <ListingCard key={listing.id} {...listing} />
+            ))}
           </div>
         </div>
       </div>

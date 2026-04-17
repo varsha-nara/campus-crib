@@ -7,17 +7,6 @@ import HeroCard from "./HeroCard"
 import Listing from "./Listing"
 import { listings } from "@/data/listings";
 
-interface ListingData {
-  id: string;
-  title: string;
-  price: string;
-  image: string;
-  bedrooms: number;
-  bathrooms: number;
-  sqft: string;
-  amenities: string[];
-}
-
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const router = useRouter()

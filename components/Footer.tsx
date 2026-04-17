@@ -7,7 +7,7 @@ export default function Footer() {
   const [message, setMessage] = useState("")
 
   return (
-    <footer className="bg-[#ee5d6c] text-white overflow-hidden mt-[10%] sticky pb-0">
+    <footer className="bg-[#ee5d6c] text-white overflow-hidden sticky pb-0">
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {/* Brand */}

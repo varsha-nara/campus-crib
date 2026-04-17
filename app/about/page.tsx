@@ -32,7 +32,7 @@ export default function ListingsPage() {
     ];
 
     return (
-        <div>
+        <div className="pb-[10%]">
         <section className="relative overflow-hidden min-h-screen pb-[20vh]">
             <img id="cloud1" src="/images/cloud1.png" className="absolute left-0 top-[15vh] opacity-70 lg:top-[30vh] w-[50vw] sm:w-3/5 md:w-2/3 lg:w-1/2 -translate-x-1/3 pointer-events-none" />
             <img id="cloud2" src="/images/cloud2.png" className="absolute right-0 top-[35vh] opacity-70 lg:top-[70vh] w-[50vw] sm:w-3/5 md:w-2/3 lg:w-1/2 translate-x-1/3 pointer-events-none" />

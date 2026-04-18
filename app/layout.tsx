@@ -1,5 +1,6 @@
-import type { ReactNode } from "react"
+import "mapbox-gl/dist/mapbox-gl.css"
 import "@/styles/globals.css"
+import type { ReactNode } from "react"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 

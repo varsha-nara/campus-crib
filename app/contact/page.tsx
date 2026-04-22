@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar"
 export default function page() {
   return (
     <div>
-    <section className="relative bg-[#ee5d6c] text-white min-h-screen flex items-center justify-center">
+    <section className="relative bg-[#eeaf61] text-white min-h-screen flex items-center justify-center">
         <div className="relative z-10 text-center px-6 py-16 flex flex-col items-center">
             {/* Email List */}
             <div className="w-full">

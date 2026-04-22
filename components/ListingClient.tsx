@@ -154,7 +154,7 @@ export default function ListingsClient({
       <div className="flex flex-row justify-between">
         {filtered.length !== 0 && (
           <p className="text-white text-md font-quickSand ml-4 mr-4 mb-4">
-            {filtered.length} roommate
+            {filtered.length} listing
             {filtered.length !== 1 ? "s" : ""} found
           </p>
         )}

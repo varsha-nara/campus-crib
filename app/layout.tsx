@@ -11,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-b from-[#ee5d6c] via-[#fb9062] to-[#eeaf61]">
+      <body className="bg-gradient-to-b from-[#eeaf61] via-[#fb9062] to-[#ee5d6c]">
         <Navbar />
           {children}
         <Footer />
